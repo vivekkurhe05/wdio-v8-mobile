@@ -4,9 +4,12 @@ const INSTRUCTION_1 = '//android.view.View[@content-desc="Align the above image 
 const INSTRUCTION_2 = '//android.view.View[@content-desc="Please hold still…"]';
 const INSTRUCTION_3 = '//android.view.View[@content-desc="Please wait while we verify this product for you….."]';
 const GENUINE_RESULT = '~Genuine';
+const FAKE_RESULT = '~Potential Fake';
+const CANNOT_CONFIRM_RESULT = '~Cannot Confirm'
 const PHOTO_QUALTITY_RESULT = '~Photo Quality Issue';
-const CAPTURE_BTN = '~CAPTURE';
+const CAPTURE_BTN = '~CAPTURE';;
 const MESSAGE = '//android.view.View[@content-desc="This product is Genuine"]';
+const BRAND_ENGAGEMENT_BTN = '//android.widget.Button[@content-desc="BRAND ENGAGEMENT"]';
 
 class DetectScreen {
 
@@ -26,7 +29,6 @@ class DetectScreen {
     }
 
     get instruction_2() {
-        // $(INSTRUCTION_2).waitForExist({timeout: 10000});
         return $(INSTRUCTION_2);
     }
 
@@ -35,23 +37,32 @@ class DetectScreen {
     }
 
     get genuine_result() {
-        $(GENUINE_RESULT).waitForDisplayed({timeout: 50000})
         return $(GENUINE_RESULT);
     }
 
+    get fake_result() {
+        return $(FAKE_RESULT);
+    }
+
+    get cannot_confirm_result() {
+        return $(CANNOT_CONFIRM_RESULT);
+    }
+
     get photo_quality_result() {
-        $(PHOTO_QUALTITY_RESULT).waitForDisplayed({timeout: 50000})
         return $(PHOTO_QUALTITY_RESULT);
     }
 
     get message() {
-        $(MESSAGE).waitForDisplayed({timeout: 50000})
         return $(MESSAGE);
     }
 
     get capture_btn() {
         $(CAPTURE_BTN).waitForDisplayed({timeout: 10000});
         return $(CAPTURE_BTN);
+    }
+
+    get brand_engagement_btn() {
+        return $(BRAND_ENGAGEMENT_BTN);
     }
 }
 

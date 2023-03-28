@@ -66,7 +66,8 @@ exports.config = {
     capabilities: [
         {
             platformName: "Android",
-            "appium:udid": "Z9ZDVGIJYTRSMFIB",
+            "appium:udid": "Z9ZDVGIJYTRSMFIB", //vivo 1929
+            // "appium:udid": "R9HT508KYRE", // Samsung A03
             "appium:automationName": "UIAutomator2",
             "appium:app": path.join(process.cwd(), "\\app\\android\\Vyu2.0_qa_070323.apk"),
             "appium:autoGrantPermissions": true,
@@ -108,11 +109,11 @@ exports.config = {
     baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 60000,
+    waitforTimeout: 600000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
-    connectionRetryTimeout: 120000,
+    connectionRetryTimeout: 60000,
     //
     // Default request retries count
     connectionRetryCount: 3,
