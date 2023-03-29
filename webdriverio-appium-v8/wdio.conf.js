@@ -109,7 +109,7 @@ exports.config = {
     baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 600000,
+    waitforTimeout: 12000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response

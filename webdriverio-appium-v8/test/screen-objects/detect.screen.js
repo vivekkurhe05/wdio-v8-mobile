@@ -57,12 +57,27 @@ class DetectScreen {
     }
 
     get capture_btn() {
-        $(CAPTURE_BTN).waitForDisplayed({timeout: 10000});
+        $(CAPTURE_BTN).waitForDisplayed();
         return $(CAPTURE_BTN);
     }
 
     get brand_engagement_btn() {
         return $(BRAND_ENGAGEMENT_BTN);
+    }
+
+    async clickCaptureButton() {
+        await this.capture_btn.isEnabled().then(async (isEnabled) => {
+            if(isEnabled) await this.capture_btn.click();
+        })
+        
+    }
+
+    async waitForImageCapture() {
+        await this.instruction_2.waitForDisplayed({reverse: true});
+    }
+
+    async waitForResult() {
+        await this.instruction_3.waitForDisplayed({reverse: true});
     }
 }
 
