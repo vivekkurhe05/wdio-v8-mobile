@@ -18,6 +18,11 @@ class DiscoverScreen {
         $(EXIT_BTN).waitForDisplayed({timeout: 5000});
         return $(EXIT_BTN);
     }
+
+    async scanQRCode() {
+        const isDisplayed = await this.title.isDisplayed();
+        return isDisplayed;
+    }
 }
 
 module.exports = new DiscoverScreen()

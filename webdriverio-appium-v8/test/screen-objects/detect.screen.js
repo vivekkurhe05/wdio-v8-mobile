@@ -67,7 +67,10 @@ class DetectScreen {
 
     async clickCaptureButton() {
         await this.capture_btn.isEnabled().then(async (isEnabled) => {
-            if(isEnabled) await this.capture_btn.click();
+            if(isEnabled) {
+                await driver.pause(500);
+                await this.capture_btn.click();
+            }
         })
         
     }
