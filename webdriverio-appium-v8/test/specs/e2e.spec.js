@@ -2,6 +2,7 @@ var chaiExpect = require('chai').expect
 const mainScreen = require('../screen-objects/main.screen.js')
 const discoverScreen = require('../screen-objects/discover.screen.js');
 const detectScreen = require('../screen-objects/detect.screen.js');
+const applitools = require('../../utils/applitools.js')
 
 describe('Should test all four scenarios for democarton', () => {
 
@@ -31,7 +32,9 @@ describe('Should test all four scenarios for democarton', () => {
 
         await detectScreen.waitForResult();
 
-        await expect(await detectScreen.genuine_result).toBeDisplayed()
+        await expect(await detectScreen.genuine_result).toBeDisplayed();
+
+        await applitools.takeScreenshot("Genuine", "Genuine screen", "Genuine Result!");
 
     });
 
@@ -51,9 +54,11 @@ describe('Should test all four scenarios for democarton', () => {
 
         await expect(await detectScreen.fake_result).toBeDisplayed();
 
+        await applitools.takeScreenshot("Fake", "Fake screen", "Fake Result!");
+
     })
 
-    it('Should give CANNOT CONFIRM for democarton\'s out of focus encrypted image', async () => {
+    it.only('Should give CANNOT CONFIRM for democarton\'s out of focus encrypted image', async () => {
         await discoverScreen.scanQRCode().then(function(isDisplayed) {
             chaiExpect(isDisplayed).to.be.true;
         });
@@ -68,6 +73,8 @@ describe('Should test all four scenarios for democarton', () => {
         await detectScreen.waitForResult();
 
         await expect(await detectScreen.cannot_confirm_result).toBeDisplayed();
+
+        await applitools.takeScreenshot("Cannot Confirm", "Cannot Confirm screen", "Cannot Confirm Result!");
     })
 
     it('Should give PHOTO QUALITY ISSUE for democarton\'s bad quality image', async () => {
@@ -85,6 +92,8 @@ describe('Should test all four scenarios for democarton', () => {
         await detectScreen.waitForResult();
 
         await expect(await detectScreen.photo_quality_result).toBeDisplayed();
+
+        await applitools.takeScreenshot("Photo Quality", "Photo Quality screen", "Photo Quality Result!");
     })
 });
 

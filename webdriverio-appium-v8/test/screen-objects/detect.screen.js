@@ -29,10 +29,12 @@ class DetectScreen {
     }
 
     get instruction_2() {
+        $(INSTRUCTION_1).waitForDisplayed({timeout: 10000});
         return $(INSTRUCTION_2);
     }
 
     get instruction_3() {
+        $(INSTRUCTION_1).waitForDisplayed({timeout: 10000});
         return $(INSTRUCTION_3);
     }
 

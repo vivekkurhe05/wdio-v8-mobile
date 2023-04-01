@@ -26,7 +26,6 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        // ToDo: define location for spec files here
         './test/specs/**/e2e.spec.js'
     ],
     // Patterns to exclude.
@@ -55,25 +54,16 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    // capabilities: [{
-    //     'appium:platformName': 'Android',
-    //     'appium:platformVersion': '11.0',
-    //     'appium:deviceName': 'Nexus 5',
-    //     'appium:automationName': 'UIAutomator2',
-    //     'appium:app': path.join(process.cwd(), '\\app\\android\\ApiDemos-debug.apk')
-    // }],
-
     capabilities: [
         {
             platformName: "Android",
             "appium:udid": "Z9ZDVGIJYTRSMFIB", //vivo 1929
-            // "appium:udid": "R9HT508KYRE", // Samsung A03
             "appium:automationName": "UIAutomator2",
-            "appium:app": path.join(process.cwd(), "\\app\\android\\Vyu2.0_qa_070323.apk"),
-            "appium:autoGrantPermissions": true,
+            "appium:app": path.join(process.cwd(), "\\app\\android\\Vyu2.0_qa_310323.apk"),
             "appium:appPackage": "com.ennoventure.vyu2",
             "appium:appActivity": "com.ennoventure.vyu2.MainActivity",
-        },
+            "appium:autoGrantPermissions": true,
+        }
     ],
     //
     // ===================
