@@ -1,6 +1,11 @@
 const path = require('path')
 
 exports.config = {
+
+    user: process.env.LT_USERNAME,
+    key: process.env.LT_ACCESS_KEY,
+
+    updateJob: false,
     //
     // ====================
     // Runner Configuration
@@ -26,7 +31,7 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/e2e.spec.js'
+        './src/test/specs/**/salesDemoKit.spec.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -59,10 +64,24 @@ exports.config = {
             platformName: "Android",
             "appium:udid": "Z9ZDVGIJYTRSMFIB", //vivo 1929
             "appium:automationName": "UIAutomator2",
-            "appium:app": path.join(process.cwd(), "\\app\\android\\Vyu2.0_qa_310323.apk"),
+            "appium:app": path.join(process.cwd(), "\\app\\android\\vyu2_04042023_1.apk"),
+            "appium:autoGrantPermissions": true,
             "appium:appPackage": "com.ennoventure.vyu2",
             "appium:appActivity": "com.ennoventure.vyu2.MainActivity",
-            "appium:autoGrantPermissions": true,
+        },
+        {
+            // LT capabilities setup
+            build: "NodeJS WebDriverIO Android",
+            name: "Vyu flutter app tests for android",
+            isRealMobile: true,
+            deviceName: "Pixel.*",
+            platformVersion: "12",
+            platformName: "android",
+            app: "lt://APP10160531401680606231844140", // Set your APP URL
+            autoGrantPermissions: true,
+            appPackage: "com.ennoventure.vyu2",
+            appActivity: "com.ennoventure.vyu2.MainActivity",
+            enableImageInjection: true
         }
     ],
     //
@@ -73,6 +92,10 @@ exports.config = {
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'info',
+
+    coloredLogs: true,
+    screenshotPath: "./errorShots/",
+    hostname: "mobile-hub.lambdatest.com",
     //
     // Set specific log levels per logger
     // loggers:
@@ -143,7 +166,7 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 600000
+        timeout: process.env.DEBUG === 'true' ? 999999 : 600000
     },
     //
     // =====
