@@ -70,6 +70,15 @@ exports.config = {
             "appium:appActivity": "com.ennoventure.vyu2.MainActivity",
         },
         {
+            platformName: "ios",
+            "appium:udid": "", // iPhone 13 Pro
+            "appium:automationName": "XCUITest",
+            "appium:app": path.join(process.cwd(), ""),
+            "appium:autoGrantPermissions": true,
+            "appium:appPackage": "com.ennoventure.vyu2",
+            "appium:appActivity": "com.ennoventure.vyu2.MainActivity",
+        },
+        {
             // LT capabilities setup
             build: "NodeJS WebDriverIO Android",
             name: "Vyu flutter app tests for android",
